@@ -3,7 +3,6 @@
  */
 package org.grozandrei.exposable.processor;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Set;
 
@@ -78,8 +77,10 @@ public class ExposableProcessor extends AbstractProcessor {
 			final TypeSpec typespec = classBuilder.addModifiers(Modifier.PUBLIC, Modifier.FINAL).build();
 			final JavaFile javaFile = JavaFile.builder(elem.getEnclosingElement().toString(), typespec).build();
 
+			processingEnv.getMessager().printMessage(Kind.NOTE, "Generating exposable class: " + javaFile.packageName + "." + elem.getSimpleName() + "_");
 			try {
-				javaFile.writeTo(new File(GENERATED_FILES_DESTINATION));
+				// javaFile.writeTo(new File(GENERATED_FILES_DESTINATION));
+				javaFile.writeTo(processingEnv.getFiler());
 			} catch (final IOException e) {
 				processingEnv.getMessager().printMessage(Kind.ERROR, "Cannot write generated class file " + e.getLocalizedMessage());
 			}
