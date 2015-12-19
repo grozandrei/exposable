@@ -4,6 +4,8 @@
 package org.grozandrei.exposable.processor;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 
 import javax.annotation.processing.AbstractProcessor;
@@ -62,14 +64,21 @@ public class ExposableProcessor extends AbstractProcessor {
 			for (final Element elem : elements) {
 				final TypeSpec.Builder classBuilder = TypeSpec.classBuilder(elem.getSimpleName() + "_").addJavadoc("$S" + System.lineSeparator(),
 						GENERATED_FILES_JAVADOC);
+				final Exposable exposableAnnotation = elem.getAnnotation(Exposable.class);
+				final List<Modifier> excludeModifiers = Arrays.asList(exposableAnnotation.exclude());
 				for (final Element subElement : elem.getEnclosedElements()) {
 					if (subElement.getKind() == ElementKind.FIELD) {
-						final FieldSpec fieldSpec = FieldSpec
-								.builder(String.class, buildFieldDescriptionName(subElement.getSimpleName().toString()), Modifier.PUBLIC, Modifier.STATIC,
-										Modifier.FINAL)
-								.initializer("$S", subElement.getSimpleName().toString())
-								.addJavadoc("$S" + System.lineSeparator(), FIELD_JAVADOC + " <b>" + subElement.getSimpleName().toString() + "</b>").build();
-						classBuilder.addField(fieldSpec);
+						if (subElement.getModifiers().stream().anyMatch(modifier -> excludeModifiers.contains(modifier))) {
+							processingEnv.getMessager().printMessage(Kind.NOTE,
+									"Skipping generation of metadata for field " + subElement.getSimpleName().toString());
+						} else {
+							final FieldSpec fieldSpec = FieldSpec
+									.builder(String.class, buildFieldDescriptionName(subElement.getSimpleName().toString()), Modifier.PUBLIC, Modifier.STATIC,
+											Modifier.FINAL)
+									.initializer("$S", subElement.getSimpleName().toString())
+									.addJavadoc("$S" + System.lineSeparator(), FIELD_JAVADOC + " <b>" + subElement.getSimpleName().toString() + "</b>").build();
+							classBuilder.addField(fieldSpec);
+						}
 					}
 				}
 				final TypeSpec typespec = classBuilder.addModifiers(Modifier.PUBLIC, Modifier.FINAL).build();

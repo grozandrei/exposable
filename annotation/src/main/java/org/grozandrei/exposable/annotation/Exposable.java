@@ -8,6 +8,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import javax.lang.model.element.Modifier;
+
 /**
  * Exposable annotation. Can be applied to classes. All classes annotated with {@link Exposable} will have generated field names at compile time.
  *
@@ -17,4 +19,10 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.CLASS)
 @Target(ElementType.TYPE)
 public @interface Exposable {
+
+	/**
+	 *
+	 * @return
+	 */
+	Modifier[] exclude() default { Modifier.STATIC };
 }
