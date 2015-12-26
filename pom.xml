@@ -44,7 +44,7 @@
 	</build>
 
 	<scm>
-		<connection>scm:git:file://C:/jde/gitrepo/exposable</connection>
+		<connection>scm:git:https://github.com/grozandrei/exposable.git</connection>
 		<tag>HEAD</tag>
 	</scm>
 
