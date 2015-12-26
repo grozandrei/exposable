@@ -10,7 +10,7 @@ If you use maven, please add the dependency in your project pom.xml.
 <dependency>
 	<groupId>org.grozandrei.exposable</groupId>
 	<artifactId>exposable-annotation</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 </dependency>
 ```
 
@@ -45,7 +45,7 @@ For maven, the following plugins must be used:
 					<dependency>
 						<groupId>org.grozandrei.exposable</groupId>
 						<artifactId>exposable-processor</artifactId>
-						<version>0.0.1-SNAPSHOT</version>
+						<version>0.0.1</version>
 					</dependency>
 				</dependencies>
 			</plugin>
@@ -71,4 +71,4 @@ For maven, the following plugins must be used:
 	</build>
 ```
 
-Then run the usual <code>mvn install</code> build command and the processor will do the work of generating exposable classes.
+Then run the usual <code>mvn install</code> build command on your project and the processor will generate metadata information for exposable classes.
