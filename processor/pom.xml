@@ -10,7 +10,9 @@
 
 	<artifactId>exposable-processor</artifactId>
 	<packaging>jar</packaging>
-	<name>Exposable processor</name>
+	
+	<name>exposable-processor</name>
+	<description>Exposable processor module</description>
 
 	<build>
 		<plugins>

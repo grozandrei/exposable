@@ -9,7 +9,9 @@
 	</parent>
 
 	<artifactId>exposable-annotation</artifactId>
-	<name>Exposable annotation</name>
+	
+	<name>exposable-annotation</name>
+	<description>Exposable annotation module</description>
 
 	<build>
 		<plugins>
