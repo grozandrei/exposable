@@ -21,8 +21,9 @@ import javax.lang.model.element.Modifier;
 public @interface Exposable {
 
 	/**
-	 *
-	 * @return
+	 * Retrieves the modifiers to exclude from generating metamodel
+	 * 
+	 * @return the modifiers to exclude from generating metamodel
 	 */
 	Modifier[] exclude() default { Modifier.STATIC };
 }
