@@ -58,7 +58,7 @@
 	</build>
 
 	<scm>
-		<connection>scm:git:https://github.com/grozandrei/exposable.git</connection>
+		<connection>scm:git:git@github.com:grozandrei/exposable.git</connection>
 		<tag>HEAD</tag>
 	</scm>
 
