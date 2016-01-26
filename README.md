@@ -10,7 +10,7 @@ If you use maven, please add the dependency in your project pom.xml.
 <dependency>
 	<groupId>org.grozandrei.exposable</groupId>
 	<artifactId>exposable-annotation</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 </dependency>
 ```
 
