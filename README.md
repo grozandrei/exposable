@@ -10,7 +10,7 @@ If you use maven, please add the dependency in your project pom.xml.
 <dependency>
 	<groupId>org.grozandrei</groupId>
 	<artifactId>exposable-annotation</artifactId>
-	<version>0.0.3</version>
+	<version>1.0.0</version>
 </dependency>
 ```
 
@@ -45,7 +45,7 @@ For maven, the following plugins must be used:
 					<dependency>
 						<groupId>org.grozandrei</groupId>
 						<artifactId>exposable-processor</artifactId>
-						<version>0.0.3</version>
+						<version>1.0.0</version>
 					</dependency>
 				</dependencies>
 			</plugin>
