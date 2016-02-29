@@ -8,9 +8,9 @@ If you use maven, please add the dependency in your project pom.xml.
 
 ```xml
 <dependency>
-	<groupId>org.grozandrei.exposable</groupId>
+	<groupId>org.grozandrei</groupId>
 	<artifactId>exposable-annotation</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 </dependency>
 ```
 
@@ -43,9 +43,9 @@ For maven, the following plugins must be used:
 				</executions>
 				<dependencies>
 					<dependency>
-						<groupId>org.grozandrei.exposable</groupId>
+						<groupId>org.grozandrei</groupId>
 						<artifactId>exposable-processor</artifactId>
-						<version>0.0.2</version>
+						<version>0.0.3</version>
 					</dependency>
 				</dependencies>
 			</plugin>
