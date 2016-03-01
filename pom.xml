@@ -3,7 +3,7 @@
 
 	<groupId>com.github.grozandrei</groupId>
 	<artifactId>exposable-parent</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2-SNAPSHOT</version>
 
 	<packaging>pom</packaging>
 
@@ -112,7 +112,7 @@
 		<url>https://github.com/grozandrei/exposable.git</url>
 		<connection>scm:git:git@github.com:grozandrei/exposable.git</connection>
 		<developerConnection>scm:git:git@github.com:grozandrei/exposable.git</developerConnection>
-		<tag>v0.0.1</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<distributionManagement>
