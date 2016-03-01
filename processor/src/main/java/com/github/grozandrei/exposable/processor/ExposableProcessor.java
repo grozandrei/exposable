@@ -1,7 +1,7 @@
 /**
  *
  */
-package org.grozandrei.exposable.processor;
+package com.github.grozandrei.exposable.processor;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -20,8 +20,7 @@ import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 import javax.tools.Diagnostic.Kind;
 
-import org.grozandrei.exposable.annotation.Exposable;
-
+import com.github.grozandrei.exposable.annotation.Exposable;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.TypeSpec;

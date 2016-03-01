@@ -1,7 +1,7 @@
 /**
  *
  */
-package org.grozandrei.exposable.annotation;
+package com.github.grozandrei.exposable.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
