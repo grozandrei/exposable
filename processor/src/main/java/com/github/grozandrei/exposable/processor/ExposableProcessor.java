@@ -31,7 +31,7 @@ import com.squareup.javapoet.TypeSpec;
  * @author Andrei Groza
  *
  */
-@SupportedAnnotationTypes("org.grozandrei.exposable.annotation.Exposable")
+@SupportedAnnotationTypes("com.github.grozandrei.exposable.annotation.Exposable")
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 @SupportedOptions({ "debug" })
 public class ExposableProcessor extends AbstractProcessor {
@@ -58,7 +58,7 @@ public class ExposableProcessor extends AbstractProcessor {
 		final Set<? extends Element> elements = roundEnv.getElementsAnnotatedWith(Exposable.class);
 
 		if (!elements.isEmpty()) {
-			processingEnv.getMessager().printMessage(Kind.NOTE, "Start generating fields descriptors for exposable classes..");
+			this.processingEnv.getMessager().printMessage(Kind.NOTE, "Start generating fields descriptors for exposable classes..");
 
 			for (final Element elem : elements) {
 				final TypeSpec.Builder classBuilder = TypeSpec.classBuilder(elem.getSimpleName() + "_").addJavadoc("$S" + System.lineSeparator(),
@@ -68,7 +68,7 @@ public class ExposableProcessor extends AbstractProcessor {
 				for (final Element subElement : elem.getEnclosedElements()) {
 					if (subElement.getKind() == ElementKind.FIELD) {
 						if (subElement.getModifiers().stream().anyMatch(modifier -> excludeModifiers.contains(modifier))) {
-							processingEnv.getMessager().printMessage(Kind.NOTE,
+							this.processingEnv.getMessager().printMessage(Kind.NOTE,
 									"Skipping generation of metadata for field " + subElement.getSimpleName().toString());
 						} else {
 							final FieldSpec fieldSpec = FieldSpec
@@ -83,16 +83,16 @@ public class ExposableProcessor extends AbstractProcessor {
 				final TypeSpec typespec = classBuilder.addModifiers(Modifier.PUBLIC, Modifier.FINAL).build();
 				final JavaFile javaFile = JavaFile.builder(elem.getEnclosingElement().toString(), typespec).build();
 
-				processingEnv.getMessager().printMessage(Kind.NOTE,
+				this.processingEnv.getMessager().printMessage(Kind.NOTE,
 						"Generating metadata exposable class: " + javaFile.packageName + "." + elem.getSimpleName() + "_");
 				try {
-					javaFile.writeTo(processingEnv.getFiler());
+					javaFile.writeTo(this.processingEnv.getFiler());
 				} catch (final IOException e) {
-					processingEnv.getMessager().printMessage(Kind.ERROR, "Cannot write generated class file " + e.getLocalizedMessage());
+					this.processingEnv.getMessager().printMessage(Kind.ERROR, "Cannot write generated class file " + e.getLocalizedMessage());
 				}
 			}
 
-			processingEnv.getMessager().printMessage(Kind.NOTE, "Finish generating fields descriptors for exposable classes.");
+			this.processingEnv.getMessager().printMessage(Kind.NOTE, "Finish generating fields descriptors for exposable classes.");
 		}
 
 		return true;
